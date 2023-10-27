@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Alberto Rojas",
+      "email": "leoncito123@gmail.com",
+      "password": "abcdef69@",
+      "code": "12443",
+      "profesion": "Software Engineer"
+    },
+    {
+      "id": 2,
+      "fullName": "Juan Perez",
+      "email": "junito746@gmail.com",
+      "password": "mykyiuk@",
+      "code": "35734",
+      "profesion": "Software Engineer"
+    },
+    {
+      "id": 3,
+      "fullName": "Sage Jett",
+      "email": "jetsage23@gmail.com",
+      "password": "ryerfnkoo@",
+      "code": "96977",
+      "profesion": "Software Engineer"
+    }
+  ]
+}
