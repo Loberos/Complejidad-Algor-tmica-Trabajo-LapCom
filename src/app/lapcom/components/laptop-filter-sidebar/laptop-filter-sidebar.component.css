@@ -1,0 +1,31 @@
+.sidebar {
+  width: 200px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.filtro {
+  margin-bottom: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+input[type='number'] {
+  width: 45%;
+  padding: 8px;
+  margin: 5px 0;
+}

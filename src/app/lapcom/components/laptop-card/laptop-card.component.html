@@ -1,0 +1,20 @@
+<app-header></app-header>
+<h2>Lists Laptops</h2>
+<ul class="laptop-list">
+  <li *ngFor="let laptop of laptops" class="laptop-item">
+    <div class="laptop-details">
+      <h3>{{ laptop.Laptop }}</h3>
+      <p><strong>Status:</strong> {{ laptop.Status }}</p>
+      <p><strong>Brand:</strong> {{ laptop.Brand }}</p>
+      <p><strong>Model:</strong> {{ laptop.Model }}</p>
+      <p><strong>CPU:</strong> {{ laptop.CPU }}</p>
+      <p><strong>RAM:</strong> {{ laptop.RAM }} GB</p>
+      <p><strong>Storage:</strong> {{ laptop.Storage }} GB {{ laptop.StorageType }}</p>
+      <p><strong>GPU:</strong> {{ laptop.GPU }}</p>
+      <p><strong>Screen:</strong> {{ laptop.Screen }}"</p>
+      <p><strong>Touch:</strong> {{ laptop.Touch }}</p>
+      <p><strong>Precio Final:</strong> ${{ laptop.FinalPrice }}</p>
+    </div>
+  </li>
+</ul>
+<app-footer></app-footer>

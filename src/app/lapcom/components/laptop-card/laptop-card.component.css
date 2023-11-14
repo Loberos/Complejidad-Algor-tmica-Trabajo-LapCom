@@ -1,0 +1,27 @@
+.laptop-list {
+  list-style: none;
+  padding: 0;
+}
+
+.laptop-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.laptop-details {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.laptop-details h3 {
+  margin: 0 0 5px;
+  font-size: 1.2em;
+}
+
+.laptop-details p {
+  margin: 5px 0;
+}
+
+/* Puedes ajustar estos estilos según el diseño deseado */
