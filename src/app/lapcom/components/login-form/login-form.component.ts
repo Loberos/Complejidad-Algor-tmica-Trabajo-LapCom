@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {UsersService} from "../../services/users/users.service";
-import {AuthService} from "../../services/auth/auth.service";
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,19 +10,22 @@ import { Router } from '@angular/router';
 export class LoginFormComponent {
   email: string = '';
   password: string = '';
-  errorMessage: string = '';
 
-  constructor(private usersService: UsersService, private authService: AuthService,    private router: Router) {}
+  constructor(private authService: UsersService, private router: Router) {}
 
   login() {
-    this.usersService.authenticateUser(this.email, this.password).subscribe(user => {
-      if (user) {
-        this.authService.setAuthenticatedUser(user);
+    this.authService.login(this.email, this.password).subscribe(
+      (response) => {
+        console.log('Login exitoso', response);
         this.router.navigate(['/home']);
-      } else {
-        this.errorMessage = 'Credenciales incorrectas';
+      },
+      (error) => {
+        console.error('Error en el inicio de sesión', error);
       }
-    });
+    );
   }
+
+
 }
+
 

@@ -132,6 +132,10 @@ input::placeholder {
   height: auto;
 }
 
+.singup{
+  text-decoration: underline;
+}
+
 @media (max-width: 1000px) {
   .hide-image {
     display: none;

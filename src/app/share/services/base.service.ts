@@ -20,16 +20,13 @@ export class BaseService<T> {
   }
 
   handleError(error: HttpErrorResponse){
-    //Default error handling
     if (error.error instanceof ErrorEvent){
       console.error(`An error ocurred: ${error.error.message}`);
     }
     else
     {
-      //Unsuccessful Response Error Code returned from Backend
       console.log(`Backend returned core ${error.status}, body was ${error.error} `);
     }
-    //Return an observable with a user-facing error message
     return throwError(()=> new Error('Something happened with request, please try again later.'));
   }
 

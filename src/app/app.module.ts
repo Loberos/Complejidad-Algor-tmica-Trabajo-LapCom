@@ -9,14 +9,17 @@ import { LoginFormComponent } from './lapcom/components/login-form/login-form.co
 import { SingupFormComponent } from './lapcom/components/singup-form/singup-form.component';
 import { FooterComponent } from './public/pages/footer/footer.component';
 import { HeaderComponent } from './public/pages/header/header.component';
-import { RecommedComponent } from './lapcom/pages/recommed/recommed.component';
 import { ReviewsComponent } from './lapcom/pages/reviews/reviews.component';
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {LaptopsService} from "./lapcom/services/laptops/laptops.service";
 import {UsersService} from "./lapcom/services/users/users.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LaptopDetailsComponent } from './lapcom/components/laptop-details/laptop-details.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { LaptopFilterComponent } from './lapcom/components/laptop-filter/laptop-filter.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +31,9 @@ import {FormsModule} from "@angular/forms";
     SingupFormComponent,
     FooterComponent,
     HeaderComponent,
-    RecommedComponent,
     ReviewsComponent,
+    LaptopDetailsComponent,
+    LaptopFilterComponent,
   ],
   imports: [
     HttpClientModule,
@@ -37,6 +41,9 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    ReactiveFormsModule,
   ],
   providers: [LaptopsService, UsersService],
   bootstrap: [AppComponent]

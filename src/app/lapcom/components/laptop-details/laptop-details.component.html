@@ -1,0 +1,36 @@
+<app-header></app-header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<div *ngIf="laptop">
+  <div class="laptop-container">
+    <div class="image-container">
+      <img src="assets/laptop.png" alt="Imagen generica de laptop">
+    </div>
+    <div class="info-container">
+      <h2>{{ laptop.Brand }} - {{ laptop.Model }}</h2>
+      <p><strong>GPU:</strong> {{ laptop.GPU || 'Graphics Integrer' }}</p>
+      <p><strong>CPU:</strong> {{ laptop.CPU }}</p>
+      <p><strong>RAM:</strong> {{ laptop.RAM }} GB</p>
+      <p><strong>Storage:</strong> {{ laptop.Storage }} GB {{ laptop["Storage Type"] }}</p>
+      <p><strong>Screen:</strong> {{ laptop.Screen }}"</p>
+      <p><strong>Status:</strong> {{ laptop.Status }}</p>
+      <p><strong>Final Price:</strong> ${{ laptop["Final Price"] }}</p>
+    </div>
+  </div>
+
+  <h3>Recommendations:</h3>
+  <div class="card-recomendation-container">
+      <div *ngFor="let recommendation of recommendations">
+        <div class="card-recomendation">
+          <h4>{{ recommendation.Brand }} - {{ recommendation.Model }}</h4>
+          <p><strong>GPU:</strong> {{ recommendation.GPU }}</p>
+          <p><strong>CPU:</strong> {{ recommendation.CPU }}</p>
+          <p><strong>RAM:</strong> {{ recommendation.RAM }} GB</p>
+          <p><strong>Storage:</strong> {{ recommendation.Storage }} GB {{ recommendation["Storage Type"] }}</p>
+          <p><strong>Screen:</strong> {{ recommendation.Screen }}"</p>
+          <p><strong>Status:</strong> {{ recommendation.Status }}</p>
+          <p><strong>Final Price:</strong> ${{ recommendation["Final Price"] }}</p>
+        </div>
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>
