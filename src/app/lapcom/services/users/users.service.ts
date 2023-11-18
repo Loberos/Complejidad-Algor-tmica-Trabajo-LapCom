@@ -12,11 +12,15 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {
-    const body = { email, password };
-    return this.http.post(this.apiUrl, body);
+    // Append email and password as query parameters
+    const url = `${this.apiUrl}?email=${email}&password=${password}`;
+    console.log('Login URL:', url);  // Agrega esta línea para imprimir la URL en la consola
+
+    // Make a GET request
+    return this.http.get(url);
   }
-  register(fullname: string, email: string, password: string, profession: string): Observable<any> {
-    const body = { fullname, email, password, profession };
+  register(fullName: string, email: string, password: string, professionalTitle: string): Observable<any> {
+    const body = { fullName, email, password, professionalTitle };
     return this.http.post(this.apiUrl2, body);
   }
 

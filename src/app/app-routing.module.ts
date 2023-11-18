@@ -10,7 +10,7 @@ import {LaptopDetailsComponent} from "./lapcom/components/laptop-details/laptop-
 import {LaptopFilterComponent} from "./lapcom/components/laptop-filter/laptop-filter.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'singup', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'reviews', component: ReviewsComponent},

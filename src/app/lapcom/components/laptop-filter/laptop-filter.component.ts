@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   templateUrl: './laptop-filter.component.html',
   styleUrls: ['./laptop-filter.component.css']
 })
-export class LaptopFilterComponent  {
+export class LaptopFilterComponent implements OnInit {
   filterForm: FormGroup;
 
   laptops: Laptop[] = [];
@@ -37,6 +37,12 @@ export class LaptopFilterComponent  {
       order: ["", Validators.required]
     });
   }
+
+  ngOnInit(): void {
+    this.buscarConFiltros();
+  }
+
+
   paginateLaptops(): void {
     const startIndex = this.currentPage * this.pageSize;
     this.paginatedLaptops = this.laptops.slice(startIndex, startIndex + this.pageSize);

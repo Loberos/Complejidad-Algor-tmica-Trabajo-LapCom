@@ -10,7 +10,7 @@
 
     <form>
       <div class="form-group">
-        <input type="email" id="fullName" name="fullName" [(ngModel)]="fullname" required placeholder="Full Name">
+        <input type="email" id="fullName" name="fullName" [(ngModel)]="fullName" required placeholder="Full Name">
       </div>
       <div class="form-group">
         <input type="email" id="email" name="email" [(ngModel)]="email" required placeholder="Email">
@@ -19,10 +19,10 @@
         <input type="password" id="password" name="password" [(ngModel)]="password" required placeholder="Password">
       </div>
       <div class="form-group">
-        <input type="email" id="profesion" name="profesion" [(ngModel)]="profession" required placeholder="Professional title">
+        <input type="email" id="profesion" name="profesion" [(ngModel)]="professionalTitle" required placeholder="Professional title">
       </div>
 
-      <button routerLink="/login" routerLinkActive="active" class="register-button" type="submit">Sing up</button>
+      <button routerLink="/login" routerLinkActive="active" class="register-button" type="submit" (click)="register()">Sing up</button>
 
       <div class="Or">
         <p>Or sign up with</p>
