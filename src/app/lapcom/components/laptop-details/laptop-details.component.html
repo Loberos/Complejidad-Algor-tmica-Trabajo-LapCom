@@ -1,16 +1,22 @@
 <app-header></app-header>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+/>
 <div *ngIf="laptop">
   <div class="laptop-container">
     <div class="image-container">
-      <img src="assets/laptop.png" alt="Imagen generica de laptop">
+      <img src="assets/laptop.png" alt="Imagen generica de laptop" />
     </div>
     <div class="info-container">
       <h2>{{ laptop.Brand }} - {{ laptop.Model }}</h2>
-      <p><strong>GPU:</strong> {{ laptop.GPU || 'Graphics Integrer' }}</p>
+      <p><strong>GPU:</strong> {{ laptop.GPU || "Graphics Integrer" }}</p>
       <p><strong>CPU:</strong> {{ laptop.CPU }}</p>
       <p><strong>RAM:</strong> {{ laptop.RAM }} GB</p>
-      <p><strong>Storage:</strong> {{ laptop.Storage }} GB {{ laptop["Storage Type"] }}</p>
+      <p>
+        <strong>Storage:</strong> {{ laptop.Storage }} GB
+        {{ laptop["Storage Type"] }}
+      </p>
       <p><strong>Screen:</strong> {{ laptop.Screen }}"</p>
       <p><strong>Status:</strong> {{ laptop.Status }}</p>
       <p><strong>Final Price:</strong> ${{ laptop["Final Price"] }}</p>
@@ -19,65 +25,55 @@
 
   <h3>Recommendations:</h3>
 
+<form [formGroup]="myForm" (ngSubmit)="filterLaptops()">
   <div class="filter-container">
-    <div>
-    <label for="brand">Brand:</label>
-    <input type="radio" id="brandTrue" [(ngModel)]="filterParams.brand" (change)="filterLaptops()"> Si
-    <input type="radio" id="brandFalse" [(ngModel)]="filterParams.brand" (change)="filterLaptops()"> No
-  </div>
+    <label for="typeStorage">Storage Type:</label>
+  <select formControlName="typeStorage" id="typeStorage">
+    <option *ngFor="let option of storage" [value]="option">{{ option === '' ? 'Any' : option }}</option>
+  </select>
 
-  <div>
-    <label for="status">Status:</label>
-    <input type="radio" id="statusTrue" [(ngModel)]="filterParams.status" (change)="filterLaptops()"> Si
-    <input type="radio" id="statusFalse" [(ngModel)]="filterParams.status" (change)="filterLaptops()"> No
-  </div>
+  <label for="cpu">CPU:</label>
+  <select formControlName="cpu" id="cpu">
+    <option *ngFor="let option of cpu" [value]="option">{{ option === '' ? 'Any' : option }}</option>
+  </select>
 
-  <div>
-    <label for="price">Price:</label>
-    <input type="radio" id="priceTrue" [(ngModel)]="filterParams.price" (change)="filterLaptops()"> Si
-    <input type="radio" id="priceFalse" [(ngModel)]="filterParams.price" (change)="filterLaptops()"> No
-  </div>
+  <label for="gpu">GPU:</label>
+  <select formControlName="gpu" id="gpu">
+    <option *ngFor="let option of gpu" [value]="option">{{ option === '' ? 'Any' : option }}</option>
+  </select>
 
-  <div>
-    <label for="typeStorage">Type Storage:</label>
-    <input type="radio" id="typeStorageTrue" [(ngModel)]="filterParams.typeStorage" (change)="filterLaptops()"> Si
-    <input type="radio" id="typeStorageFalse" [(ngModel)]="filterParams.typeStorage" (change)="filterLaptops()"> No
-  </div>
+  <label for="status">Status:</label>
+  <select formControlName="status" id="status">
+    <option *ngFor="let option of status" [value]="option">{{ option === '' ? 'Any' : option }}</option>
+  </select>
 
-  <div>
-    <label for="cpu">CPU:</label>
-    <input type="radio" id="cpuTrue" [(ngModel)]="filterParams.cpu" (change)="filterLaptops()"> Si
-    <input type="radio" id="cpuFalse" [(ngModel)]="filterParams.cpu" (change)="filterLaptops()"> No
-  </div>
+  <label for="price">Price:</label>
+  <select formControlName="price" id="price">
+    <option *ngFor="let option of price" [value]="option">{{ option === '' ? 'Any' : option }}</option>
+  </select>
 
-  <div>
-    <label for="gpu">GPU:</label>
-    <input type="radio" id="gpuTrue" [(ngModel)]="filterParams.gpu" (change)="filterLaptops()"> Si
-    <input type="radio" id="gpuFalse" [(ngModel)]="filterParams.gpu" (change)="filterLaptops()"> No
+  <button type="submit">Filter </button>
   </div>
-
-  <div>
-    <label for="storage">Storage:</label>
-    <input type="radio" id="storageTrue" [(ngModel)]="filterParams.storage" (change)="filterLaptops()"> Si
-    <input type="radio" id="storageFalse" [(ngModel)]="filterParams.storage" (change)="filterLaptops()"> No
-  </div>
-
-  <button (click)="filterLaptops()">Filtrar</button>
-  </div>
+</form>
 
   <div class="card-recomendation-container">
-      <div *ngFor="let recommendation of recommendations">
-        <div class="card-recomendation">
-          <h4>{{ recommendation.Brand }} - {{ recommendation.Model }}</h4>
-          <p><strong>GPU:</strong> {{ recommendation.GPU }}</p>
-          <p><strong>CPU:</strong> {{ recommendation.CPU }}</p>
-          <p><strong>RAM:</strong> {{ recommendation.RAM }} GB</p>
-          <p><strong>Storage:</strong> {{ recommendation.Storage }} GB {{ recommendation["Storage Type"] }}</p>
-          <p><strong>Screen:</strong> {{ recommendation.Screen }}"</p>
-          <p><strong>Status:</strong> {{ recommendation.Status }}</p>
-          <p><strong>Final Price:</strong> ${{ recommendation["Final Price"] }}</p>
-        </div>
+    <div *ngFor="let recommendation of recommendations">
+      <div class="card-recomendation">
+        <h4>{{ recommendation.Brand }} - {{ recommendation.Model }}</h4>
+        <p><strong>GPU:</strong> {{ recommendation.GPU }}</p>
+        <p><strong>CPU:</strong> {{ recommendation.CPU }}</p>
+        <p><strong>RAM:</strong> {{ recommendation.RAM }} GB</p>
+        <p>
+          <strong>Storage:</strong> {{ recommendation.Storage }} GB
+          {{ recommendation["Storage Type"] }}
+        </p>
+        <p><strong>Screen:</strong> {{ recommendation.Screen }}"</p>
+        <p><strong>Status:</strong> {{ recommendation.Status }}</p>
+        <p>
+          <strong>Final Price:</strong> ${{ recommendation["Final Price"] }}
+        </p>
       </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

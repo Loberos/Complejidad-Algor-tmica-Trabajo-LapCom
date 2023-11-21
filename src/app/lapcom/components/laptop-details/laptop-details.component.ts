@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Laptop} from "../../model/laptop";
 import {ActivatedRoute} from "@angular/router";
 import {LaptopsService} from "../../services/laptops/laptops.service";
+import { filter } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 interface FilterParams {
   brand: string;
@@ -18,27 +20,35 @@ interface FilterParams {
 @Component({
   selector: 'app-laptop-details',
   templateUrl: './laptop-details.component.html',
-  styleUrls: ['./laptop-details.component.css']
+  styleUrls: ['./laptop-details.component.css'],
 })
-
 export class LaptopDetailsComponent implements OnInit {
   laptop: Laptop | undefined;
   recommendations: any[] = [];
+  myForm: FormGroup;
 
-  filterParams: FilterParams = {
-    brand: 'False',
-    status: 'False',
-    price: 'False',
-    typeStorage: 'False',
-    cpu: 'False',
-    gpu: 'False',
-    storage: 'False'
-  };
+  brand = ['True', 'False'];
+  status = ['True', 'False'];
+  price = ['True', 'False'];
+  typeStorage = ['True', 'False'];
+  cpu = ['True', 'False'];
+  gpu = ['True', 'False'];
+  storage = ['True', 'False'];
 
   constructor(
     private route: ActivatedRoute,
-    private laptopService: LaptopsService
-  ) {}
+    private laptopService: LaptopsService,
+    private formBuilder: FormBuilder
+  ) {
+     this.myForm = this.formBuilder.group({
+       typeStorage: [''],
+       cpu: [''],
+       gpu: [''],
+       status: [''],
+       price: [''],
+       brand:['']
+     });
+  }
 
   ngOnInit(): void {
     this.getLaptopDetails();
@@ -61,15 +71,14 @@ export class LaptopDetailsComponent implements OnInit {
     });
   }
 
-
-
   filterLaptops() {
     // @ts-ignore
     const laptopId = +this.route.snapshot.paramMap.get('id');
-    this.laptopService.filterLaptops(laptopId, this.filterParams).subscribe(data => {
-      console.log(data);
-    });
+    console.log(this.myForm.value);
+     this.laptopService
+       .filterLaptops(laptopId, this.myForm.value)
+       .subscribe((data) => {
+          this.recommendations = data;
+       });
   }
-
-
 }

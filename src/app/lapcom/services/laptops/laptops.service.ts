@@ -44,9 +44,9 @@ export class LaptopsService {
       .join('&');
 
     const urlWithParams = `${this.apiUrl2}/${laptopId}/recommendation/filter?${queryParams}`;
-
+    
+    console.log(urlWithParams)
     return this.http.get(urlWithParams);
   }
-
 
 }
