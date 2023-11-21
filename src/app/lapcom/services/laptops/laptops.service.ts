@@ -10,6 +10,8 @@ import {Laptop} from "../../model/laptop";
 
 export class LaptopsService {
   private apiUrl = 'https://josehp29.pythonanywhere.com/api';
+  private apiUrl2 = 'https://josehp29.pythonanywhere.com/api/laptops';
+
 
   constructor(private http: HttpClient) {}
 
@@ -34,5 +36,17 @@ export class LaptopsService {
     for(let i=0; i<parameter.length;i++){if (i>0){cadena+="&";}cadena+=parameter[i];}
     return this.http.get<any[]>(`${this.apiUrl}/laptops/filter?${cadena}`);
   }
+
+  filterLaptops(laptopId: number, params: any): Observable<any> {
+    const queryParams = Object.entries(params)
+      .filter(([key, value]) => value)
+      .map(([key]) => `${key}=True`)
+      .join('&');
+
+    const urlWithParams = `${this.apiUrl2}/${laptopId}/recommendation/filter?${queryParams}`;
+
+    return this.http.get(urlWithParams);
+  }
+
 
 }

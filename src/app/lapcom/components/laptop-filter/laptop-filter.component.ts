@@ -11,6 +11,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./laptop-filter.component.css']
 })
 export class LaptopFilterComponent implements OnInit {
+
+
+
   filterForm: FormGroup;
 
   laptops: Laptop[] = [];
@@ -24,6 +27,9 @@ export class LaptopFilterComponent implements OnInit {
   pageSize = 8;
   currentPage = 0;
   totalItems = 0;
+
+
+
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   constructor(private fb: FormBuilder, private laptopService: LaptopsService,private router:Router) {

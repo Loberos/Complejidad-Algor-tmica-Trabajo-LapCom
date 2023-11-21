@@ -18,6 +18,53 @@
   </div>
 
   <h3>Recommendations:</h3>
+
+  <div class="filter-container">
+    <div>
+    <label for="brand">Brand:</label>
+    <input type="radio" id="brandTrue" [(ngModel)]="filterParams.brand" (change)="filterLaptops()"> Si
+    <input type="radio" id="brandFalse" [(ngModel)]="filterParams.brand" (change)="filterLaptops()"> No
+  </div>
+
+  <div>
+    <label for="status">Status:</label>
+    <input type="radio" id="statusTrue" [(ngModel)]="filterParams.status" (change)="filterLaptops()"> Si
+    <input type="radio" id="statusFalse" [(ngModel)]="filterParams.status" (change)="filterLaptops()"> No
+  </div>
+
+  <div>
+    <label for="price">Price:</label>
+    <input type="radio" id="priceTrue" [(ngModel)]="filterParams.price" (change)="filterLaptops()"> Si
+    <input type="radio" id="priceFalse" [(ngModel)]="filterParams.price" (change)="filterLaptops()"> No
+  </div>
+
+  <div>
+    <label for="typeStorage">Type Storage:</label>
+    <input type="radio" id="typeStorageTrue" [(ngModel)]="filterParams.typeStorage" (change)="filterLaptops()"> Si
+    <input type="radio" id="typeStorageFalse" [(ngModel)]="filterParams.typeStorage" (change)="filterLaptops()"> No
+  </div>
+
+  <div>
+    <label for="cpu">CPU:</label>
+    <input type="radio" id="cpuTrue" [(ngModel)]="filterParams.cpu" (change)="filterLaptops()"> Si
+    <input type="radio" id="cpuFalse" [(ngModel)]="filterParams.cpu" (change)="filterLaptops()"> No
+  </div>
+
+  <div>
+    <label for="gpu">GPU:</label>
+    <input type="radio" id="gpuTrue" [(ngModel)]="filterParams.gpu" (change)="filterLaptops()"> Si
+    <input type="radio" id="gpuFalse" [(ngModel)]="filterParams.gpu" (change)="filterLaptops()"> No
+  </div>
+
+  <div>
+    <label for="storage">Storage:</label>
+    <input type="radio" id="storageTrue" [(ngModel)]="filterParams.storage" (change)="filterLaptops()"> Si
+    <input type="radio" id="storageFalse" [(ngModel)]="filterParams.storage" (change)="filterLaptops()"> No
+  </div>
+
+  <button (click)="filterLaptops()">Filtrar</button>
+  </div>
+
   <div class="card-recomendation-container">
       <div *ngFor="let recommendation of recommendations">
         <div class="card-recomendation">
