@@ -3,19 +3,7 @@ import {Laptop} from "../../model/laptop";
 import {ActivatedRoute} from "@angular/router";
 import {LaptopsService} from "../../services/laptops/laptops.service";
 import { filter } from 'rxjs';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
-interface FilterParams {
-  brand: string;
-  status: string;
-  price: string;
-  typeStorage: string;
-  cpu: string;
-  gpu: string;
-  storage: string;
-}
-
-
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-laptop-details',
@@ -25,7 +13,6 @@ interface FilterParams {
 export class LaptopDetailsComponent implements OnInit {
   laptop: Laptop | undefined;
   recommendations: any[] = [];
-  myForm: FormGroup;
 
   brand = ['True', 'False'];
   status = ['True', 'False'];
@@ -35,19 +22,21 @@ export class LaptopDetailsComponent implements OnInit {
   gpu = ['True', 'False'];
   storage = ['True', 'False'];
 
+  myForm = new FormGroup({
+    brand: new FormControl(''),
+    status: new FormControl(''),
+    price: new FormControl(''),
+    typeStorage: new FormControl(''),
+    cpu: new FormControl(''),
+    gpu: new FormControl(''),
+    storage: new FormControl(''),
+  });
   constructor(
     private route: ActivatedRoute,
     private laptopService: LaptopsService,
     private formBuilder: FormBuilder
   ) {
-     this.myForm = this.formBuilder.group({
-       typeStorage: [''],
-       cpu: [''],
-       gpu: [''],
-       status: [''],
-       price: [''],
-       brand:['']
-     });
+
   }
 
   ngOnInit(): void {
@@ -75,10 +64,10 @@ export class LaptopDetailsComponent implements OnInit {
     // @ts-ignore
     const laptopId = +this.route.snapshot.paramMap.get('id');
     console.log(this.myForm.value);
-     this.laptopService
-       .filterLaptops(laptopId, this.myForm.value)
-       .subscribe((data) => {
-          this.recommendations = data;
-       });
+    this.laptopService
+      .filterLaptops(laptopId, this.myForm.value)
+      .subscribe((data) => {
+        this.recommendations = data;
+      });
   }
 }

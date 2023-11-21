@@ -25,36 +25,61 @@
 
   <h3>Recommendations:</h3>
 
-<form [formGroup]="myForm" (ngSubmit)="filterLaptops()">
-  <div class="filter-container">
-    <label for="typeStorage">Storage Type:</label>
-  <select formControlName="typeStorage" id="typeStorage">
-    <option *ngFor="let option of storage" [value]="option">{{ option === '' ? 'Any' : option }}</option>
-  </select>
+  <form [formGroup]="myForm" (ngSubmit)="filterLaptops()">
+    <div class="filter-container">
 
-  <label for="cpu">CPU:</label>
-  <select formControlName="cpu" id="cpu">
-    <option *ngFor="let option of cpu" [value]="option">{{ option === '' ? 'Any' : option }}</option>
-  </select>
+      <label for="brand">Brand:</label>
+      <select formControlName="brand" id="brand">
+        <option *ngFor="let option of brand" [value]="option">
+          {{ option === "" ? "Any" : option }}
+        </option>
+      </select>
 
-  <label for="gpu">GPU:</label>
-  <select formControlName="gpu" id="gpu">
-    <option *ngFor="let option of gpu" [value]="option">{{ option === '' ? 'Any' : option }}</option>
-  </select>
+      <label for="typeStorage">Storage Type:</label>
+      <select formControlName="typeStorage" id="typeStorage">
+        <option *ngFor="let option of storage" [value]="option">
+          {{ option === "" ? "Any" : option }}
+        </option>
+      </select>
 
-  <label for="status">Status:</label>
-  <select formControlName="status" id="status">
-    <option *ngFor="let option of status" [value]="option">{{ option === '' ? 'Any' : option }}</option>
-  </select>
+      <label for="cpu">CPU:</label>
+      <select formControlName="cpu" id="cpu">
+        <option *ngFor="let option of cpu" [value]="option">
+          {{ option === "" ? "Any" : option }}
+        </option>
+      </select>
 
-  <label for="price">Price:</label>
-  <select formControlName="price" id="price">
-    <option *ngFor="let option of price" [value]="option">{{ option === '' ? 'Any' : option }}</option>
-  </select>
+      <label for="gpu">GPU:</label>
+      <select formControlName="gpu" id="gpu">
+        <option *ngFor="let option of gpu" [value]="option">
+          {{ option === "" ? "Any" : option }}
+        </option>
+      </select>
 
-  <button type="submit">Filter </button>
-  </div>
-</form>
+      <label for="status">Status:</label>
+      <select formControlName="status" id="status">
+        <option *ngFor="let option of status" [value]="option">
+          {{ option === "" ? "Any" : option }}
+        </option>
+      </select>
+
+      <label for="price">Price:</label>
+      <select formControlName="price" id="price">
+        <option *ngFor="let option of price" [value]="option">
+          {{ option === "" ? "Any" : option }}
+        </option>
+      </select>
+
+      <label for="storage">storage:</label>
+      <select formControlName="storage" id="storage">
+        <option *ngFor="let option of storage" [value]="option">
+          {{ option === "" ? "Any" : option }}
+        </option>
+      </select>
+
+      <button type="submit">Filter</button>
+    </div>
+  </form>
 
   <div class="card-recomendation-container">
     <div *ngFor="let recommendation of recommendations">
